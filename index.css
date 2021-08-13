@@ -1,0 +1,42 @@
+.logo {
+    display: flex;
+}
+
+
+.card {
+    display: inline-flex;
+}
+
+.oferta { 
+    background-color: rgba(158, 158, 158, 0.952);
+    color: black;
+    text-align: center;
+}
+
+.footer {
+    background-color: black;
+    margin-top: 40px;
+}
+
+h6 {
+    margin-top: 40px;
+    color: rgb(214, 9, 9);
+    text-align: left;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    color: cornsilk;
+    list-style: none;
+    text-align: left;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.mb-3 {
+    width: 170px;
+    color: blanchedalmond;
+}
