@@ -11,9 +11,18 @@ let nombre = prompt("Como te llamás?");
 let apellido = prompt("Cuál es tu apellido?");
 const persona1 = new Usuario(nombre, apellido);
 persona1.saludar();
-console.log(persona1)
+console.log(persona1);
 
-//Productos
+
+
+//GUARDAR INFO EN EL STORAGE//
+
+localStorage.setItem ("name", nombre)
+
+//TOMAR INFO EN EL STORAGE//
+localStorage.getItem ("name")
+
+//Productos //
 class Productos {
     constructor(id, producto, precio) {
         this.id = id;
@@ -35,6 +44,7 @@ let zapatillas = " 3 = Zapatillas Vans negras"
 let zapatillas2 = "4= Remera Jordan AJ1 Shoe"
 let mochila = "5= Mochila adidas Disney Mickey"
 let buzo = "6= Buzo adidas Shattered Trefoil"
+
 
 
 let carrito = [];
@@ -76,4 +86,6 @@ function precioFinal() {
     }
     return precioInicial;
 }
-alert(`El total de su carrito es de $ ${precioFinal()}`);
+
+renderizarPrecioFinal (precioFinal)
+

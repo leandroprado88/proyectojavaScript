@@ -7,10 +7,17 @@
     display: inline-flex;
 }
 
-.oferta { 
+.descuento { 
     background-color: rgba(158, 158, 158, 0.952);
     color: black;
     text-align: center;
+}
+
+.oferta {
+    color: rgb(214, 9, 9);
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
 }
 
 .footer {
