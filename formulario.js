@@ -1,5 +1,6 @@
 const PERSONAS_LISTADAS = [];
-//PASO 1:
+
+
 const INPUT_NOMBRE = document.getElementById('nombre');
 const INPUT_APELLIDO = document.getElementById('apellido');
 const INPUT_EDAD = document.getElementById('edad');
@@ -23,6 +24,10 @@ BOTON_AGREGAR.addEventListener('click', () => {
 	}
 
 	PERSONAS_LISTADAS.push(PERSONA_AGREGAR);
+    const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+    for (const personas of PERSONAS_LISTADAS ) {
+        guardarLocal(PERSONA_AGREGAR.nombre, JSON.stringify(personas));
+    }
 	INPUT_NOMBRE.value = '';
 	INPUT_APELLIDO.value = '';
 	INPUT_EDAD.value = '';
@@ -30,7 +35,6 @@ BOTON_AGREGAR.addEventListener('click', () => {
 });
 
 const RenderListado = (listado) => {
-	// LISTADO_RENDER.textContent = ''
 	let UltimoElemento = LISTADO_RENDER.lastElementChild;
 
 	while (UltimoElemento) {
