@@ -1,0 +1,36 @@
+
+
+.logo {
+    display: flex;
+}
+
+
+.card {
+    display: inline-flex;
+}
+
+.descuento { 
+    background-color: rgba(158, 158, 158, 0.952);
+    color: black;
+    text-align: center;
+}
+
+
+
+.oferta {
+    color: rgb(214, 9, 9);
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+
+.col-2 {
+    width: 50em;
+    margin-left: 300px;
+}
+
+.table {
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: 'Righteous', cursive;
+}
