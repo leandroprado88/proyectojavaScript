@@ -43,12 +43,12 @@ const RenderListado = (listado) => {
 	}
 
 	return listado.forEach((persona) => {
-		const TR = document.createElement('tr');
-		const NOMBRE_TD = document.createElement('td');
+		const TR = $("tr")
+		const NOMBRE_TD = $("td");
 		NOMBRE_TD.textContent = persona.nombre;
-		const APELLIDO_TD = document.createElement('td');
+		const APELLIDO_TD = $("td")
 		APELLIDO_TD.textContent = persona.apellido;
-		const EDAD_TD = document.createElement('td');
+		const EDAD_TD = $("td")
 		EDAD_TD.textContent = persona.edad;
 	
 
