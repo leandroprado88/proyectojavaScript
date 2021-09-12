@@ -58,15 +58,17 @@
 		  </nav>
 		<div class="container bg-light row formu1">
 			<div class="col-2">
-				
+			<form action="" id="form1">
 
-				<input type="text" class="form-control" id="nameUser" placeholder="Ingresa tu nombre"/>
+				<input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre"/>
 				<input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido"/>
 				<input type="text" class="form-control" id="edad" placeholder="Ingresa tu edad" />
-				<button id="btn">Enviar Mensaje</button>
+				<input type="text" class="form-control" id="comentarios" placeholder="Ingresa tu comentario" />
+				
+				<button type="submit" id="btn">Enviar Mensaje</button>
 			
-			
-				</div>
+			</form>
+			</div>
 
 			</div>
 		</div>
@@ -76,11 +78,11 @@
 					<th scope="col" >Nombre</th>
 					<th scope="col" >Apellido</th>
 					<th scope="col" >Edad</th>
-					<th scope="col">Ordenar</th>
+					<th scope="col">Comentario</th>
 				</tr>
 			</thead>
-			<tbody id="print">
-			
+			<tbody>
+				<tr id="body_table"></tr>  			
 			</tbody>
 		</table>
 

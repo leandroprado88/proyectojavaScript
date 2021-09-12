@@ -1,26 +1,27 @@
-class Usuario {
-    constructor(nombreUsuario, apellidoUsuario) {
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
-    }
-    saludar() {
-        alert(" Hola! " + this.nombreUsuario + " " + this.apellidoUsuario);
-    }
-}
-let nombre = prompt("Como te llamás?");
-let apellido = prompt("Cuál es tu apellido?");
-const persona1 = new Usuario(nombre, apellido);
-persona1.saludar();
-console.log(persona1);
+//movimiento del titulo//
+$("#Productos").fadeOut("slow", function(){
+$("#Productos").fadeIn(8000);})
+$("#Productos").css("width", "40%");
+$("#Productos").css({ 
+                    "font-size": "60px", 
+                     });
 
 
 
-//GUARDAR INFO EN EL STORAGE//
-
-localStorage.setItem ("name", nombre)
-
-//TOMAR INFO EN EL STORAGE//
-localStorage.getItem ("name")
+const URLGET = "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+ 
+$.get(URLGET, (respuesta, estado) => {
+    if (estado === "success")  {
+        $("#dolar").append (`
+        <p>Cotización ${respuesta[1].casa.nombre}  ${respuesta[1].casa.venta}</p>
+            
+        `)
+        console.log(respuesta);    
+        }})
+       
+$("#dolar").fadeOut("slow", function(){
+$("#dolar").fadeIn(1000);
+})
 
 //Productos //
 class Productos {
@@ -38,54 +39,78 @@ const item5 = new Productos(5, "Mochila adidas Disney Mickey", 4799);
 const item6 = new Productos(6, "Buzo adidas Shattered Trefoil", 12999);
 
 
-let remera = " 1 = Remera Adidas her studio" 
-let pantalon = " 2 = Pantalon Largo Nike River Plate"
-let zapatillas = " 3 = Zapatillas Vans negras"
-let zapatillas2 = "4= Remera Jordan AJ1 Shoe"
-let mochila = "5= Mochila adidas Disney Mickey"
-let buzo = "6= Buzo adidas Shattered Trefoil"
-
-
-
 let carrito = [];
+let preciosCarrito = [];
+var precioInicial = 0
+
+let btn = document.getElementById("boton-compra");
+let mostrarCarrito = document.getElementById("mostrarCarrito");
+
 function comprar() {
-    let buscar = prompt(`Que querés comprar? Ingrese el número correspondiente: ${item1.id} = ${item1.producto} / ${item2.id} = ${item2.producto} / ${item3.id} = ${item3.producto} / ${item4.id} = ${item4.producto} / ${item5.id} = ${item5.producto} / ${item6.id} = ${item6.producto}`);
-    switch (buscar) {
+    var valoresCompra = document.getElementById('select').value;
+    switch (valoresCompra) {
         case "1":
-            carrito.push(item1)
-            return item1.precio;
-        case "2":
-            carrito.push(item2)
-            return item2.precio;
-        case "3":
-            carrito.push(item3)
-            return item3.precio;
-        case "4":
-            carrito.push(item4)
-            return item4.precio;
-        case "5":
-            carrito.push(item5)
-            return item5.precio;
-        case "6":
-            carrito.push(item6)
-            return item6.precio;
-        default:
-            alert("No existe el producto ingresado");
+            carrito.push(item1);
+            preciosCarrito.push(item1.precio)
+
             break;
+        case "2":
+            carrito.push(item2);
+            preciosCarrito.push(item2.precio)
+            
+            break;
+
+        case "3":
+            carrito.push(item3);
+            preciosCarrito.push(item3.precio)
+    
+            break;
+        case "4":
+            carrito.push(item4);
+            preciosCarrito.push(item4.precio)
+                
+            break;    
     }
-}
-console.log(carrito);
-function precioFinal() {
-    primerCompra = true;
-    let precioInicial = 0;
-    while (primerCompra) {
-        let nuevaCompra = comprar();
-        precioInicial = precioInicial + nuevaCompra;
-        console.log(precioInicial);
-        primerCompra = confirm("Usted desea comprar otro producto?");
+
+    console.log(carrito);
+    console.log(preciosCarrito);
+    const sumarPrecios = () => {
+        for (let index = 0; index < preciosCarrito.length; index++) {
+            precioInicial += preciosCarrito[index];
+            console.log(precioInicial);
+        }
+        return precioInicial
     }
-    return precioInicial;
+
+    sumarPrecios();
+    const div_nombre_bienvenida = document.querySelector('.productosCarrito');
+
+    const div_contenedor = document.createElement('div');
+    div_contenedor.className = "carrito"
+
+    const div_precio = document.createElement('div');
+    div_precio.className = "precio_pedido"
+
+    const p_precio = document.createElement('p');
+    p_precio.className = "precio_p"
+
+    div_contenedor.appendChild(div_precio);
+    div_precio.appendChild(p_precio);
+    div_nombre_bienvenida.appendChild(div_contenedor);
+
+    const renderizarPrecioFinal = (precioInicial) => {
+        p_precio.textContent = `El total de su compra es de ${precioInicial}`;
+    };
+    renderizarPrecioFinal(precioInicial)
 }
 
-renderizarPrecioFinal (precioFinal)
+comprar(); 
+btn.addEventListener("click", function() {
+    let eliminoCarrito = document.querySelector('.carrito');
+    let eliminoPrecio = document.querySelector('.precio_p');
+    eliminoCarrito.parentNode.removeChild(eliminoCarrito);
+    eliminoPrecio.parentNode.removeChild(eliminoPrecio);
+    comprar()
+})
+
 

@@ -49,3 +49,35 @@ li {
     width: 170px;
     color: blanchedalmond;
 }
+
+#dolar {
+    font-size: 20px;
+    width: 90%;
+    text-align: right;
+    font-style: bold;
+}
+
+.productosComprar {
+    display:flex;
+    margin-left: 50%;
+    margin-top: 50px;
+
+}
+
+#mostrarCarrito {
+
+    margin-left: 50%;
+    color: blue;
+}
+
+.carro {
+    margin-top: 40px;
+    margin-left: 40%;
+}
+
+
+#Productos {
+    margin-left: 40%;
+    color: rgb(0, 0, 143);
+    font-style: inherit;
+}

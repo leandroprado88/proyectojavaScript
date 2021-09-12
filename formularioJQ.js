@@ -1,51 +1,35 @@
 
-class Nota {
-    constructor(nombre, apellido, edad) {
+class Persona {
+    constructor(nombre, apellido, edad, comentarios) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.comentarios = comentarios;
     }
 }
-let notas = []
 
-const LISTADO_RENDER = $("tbody")
+let personasSuscriptas =[];
 
-const RenderListado = (listado) => {
-	let UltimoElemento = LISTADO_RENDER.lastElementChild;
-
-	while (UltimoElemento) {
-		LISTADO_RENDER.removeChild(UltimoElemento);
-		UltimoElemento = LISTADO_RENDER.lastElementChild;
-	}
-
-	return listado.forEach((persona) => {
-		const TR = $("tr")
-		const NOMBRE_TD = $("th");
-		NOMBRE_TD.textContent = persona.nombre;
-		const APELLIDO_TD = $("th")
-		APELLIDO_TD.textContent = persona.apellido;
-		const EDAD_TD = $("th")
-		EDAD_TD.textContent = persona.edad;
-
-})
-}
-
-const imprimirNota = () => {
-    let notas = JSON.parse(localStorage.getItem("notas"))
-    notas.forEach(element => {
-        $("#print").append(`
-        <tr>
+const imprimirNota = (element) => {
+    let personasSuscriptas = JSON.parse(localStorage.getItem("comentarios"))
+    personasSuscriptas.forEach (element => {
+        $("#body_table").append(`
         <td>${element.nombre}</td>
         <td>${element.apellido}</td>
         <td>${element.edad}</td>
-        </tr>
-        `)
-        
+        <td>${element.comentarios}</td>
+        `)  
     });
-}
+};
 
-$("#btn").on("click", () => {
-    notas.push(new Nota($("#nameUser").val(), $("#apellido").val(),$("#edad").val()))
-    localStorage.setItem("notas", JSON.stringify(notas))
-    imprimirNota()
+$("#btn").on("click", (event) => {
+    event.preventDefault();
+    personasSuscriptas.push(new Persona($("#nombre").val(),$("#apellido").val(),$("#edad").val(),$("#comentarios").val()));
+    localStorage.setItem("comentarios",JSON.stringify(personasSuscriptas))
+    $("#nombre").val('');
+    $("#apellido").val('');
+    $("#edad").val('');
+    $("#comentarios").val('');
+    imprimirNota(personasSuscriptas)
 })
+    
