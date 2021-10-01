@@ -1,4 +1,5 @@
 
+
 class Persona {
     constructor(nombre, apellido, edad, comentarios) {
         this.nombre = nombre;
@@ -10,17 +11,23 @@ class Persona {
 
 let personasSuscriptas =[];
 
+
 const imprimirNota = (element) => {
+
     let personasSuscriptas = JSON.parse(localStorage.getItem("comentarios"))
     personasSuscriptas.forEach (element => {
         $("#body_table").append(`
+        <tr>
         <td>${element.nombre}</td>
         <td>${element.apellido}</td>
         <td>${element.edad}</td>
-        <td>${element.comentarios}</td>
+        <td>${element.comentarios}</td> 
+        </tr>
         `)  
     });
 };
+
+
 
 $("#btn").on("click", (event) => {
     event.preventDefault();
@@ -30,6 +37,8 @@ $("#btn").on("click", (event) => {
     $("#apellido").val('');
     $("#edad").val('');
     $("#comentarios").val('');
-    imprimirNota(personasSuscriptas)
+    $("#body_table").empty();
+    imprimirNota(personasSuscriptas);
+
 })
     
